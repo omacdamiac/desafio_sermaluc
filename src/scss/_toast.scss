@@ -1,0 +1,22 @@
+@import "../scss/variables";
+
+.toast {
+    &-info {
+        background-color: rgba(46, 138, 63, .7)!important;
+        color:  white!important;
+        // font-family: Montserrat;
+    }
+    &-container .ngx-toastr {
+        // font-family: Montserrat;
+        box-shadow: none !important;
+        font-size: 0.875rem;
+        font-weight: 400;
+        line-height: 26px;
+    }
+    &-info {
+        // background-image: url("/assets/icons/info.svg") !important;
+    }
+    &-progress {
+        background-color: red !important;
+    }
+}

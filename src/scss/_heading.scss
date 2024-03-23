@@ -1,0 +1,15 @@
+h {
+  &1 {
+    font-size: 4.5rem;
+    line-height: 4.5rem;
+    color: $gray;
+  }
+  &2 {
+    font-size: 3.5rem;
+    color: $gray;
+  }
+  &4 {
+    color: $gray2;
+    font-size: 1rem;
+  }
+}

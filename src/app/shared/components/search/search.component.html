@@ -1,0 +1,19 @@
+<div>
+  <form class="d-flex" [formGroup]="formSearch">
+    <input
+      formControlName="buscador"
+      class="form-control me-2"
+      type="search"
+      placeholder="Buscar"
+      aria-label="Search"
+      (keyup)="applyFilter($event)"
+      matTooltip="HOLA"
+    />
+    <!-- <button
+      class="btn btn-outline-success"
+      (click)="applyFilter()"
+      type="submit"
+    >
+      Buscar2
+    </button> -->
+  </form>

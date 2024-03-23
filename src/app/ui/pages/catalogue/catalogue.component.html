@@ -1,0 +1,91 @@
+<div class="row">
+  <div class="col-md-12 text-end">
+    <button (click)="create()" mat-raised-button>Nuevo producto</button>
+  </div>
+</div>
+<div class="mat-elevation-z8- bg-table mb-5 table-responsive">
+  <table
+    class="table responsive-table"
+    mat-table
+    [dataSource]="dataSource"
+    matSort
+  >
+    <!-- title Column -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Título</th>
+      <td mat-cell *matCellDef="let row" class="head" data-label="Título">
+        <span>{{ row?.title }}</span>
+      </td>
+    </ng-container>
+
+    <!-- description Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Descripción</th>
+      <td mat-cell *matCellDef="let row" class="head" data-label="Descripción">
+        <span>{{ row?.description }}</span>
+      </td>
+    </ng-container>
+
+    <!-- category Column -->
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Categoría</th>
+      <td mat-cell *matCellDef="let row" class="head" data-label="Categoría">
+        {{ row?.category }}
+      </td>
+    </ng-container>
+
+    <!-- price Column -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Precio</th>
+      <td mat-cell *matCellDef="let row" class="head" data-label="Precio">
+        {{ row?.price | currency }} 
+      </td>
+    </ng-container>
+
+    <!-- detail Column -->
+    <ng-container matColumnDef="detail">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Detalles</th>
+      <td mat-cell *matCellDef="let row" class="head" data-label="Detalles">
+        <mat-icon
+          [matTooltip]="row?.title"
+          matTooltipPosition="above"
+          aria-hidden="false"
+          (click)="view(row)"
+          aria-label="Example home icon"
+          >visibility</mat-icon
+        >
+        <mat-icon
+          [matTooltip]="'Editar: ' + row?.title"
+          matTooltipPosition="above"
+          aria-hidden="false"
+          (click)="edit(row)"
+          aria-label="Example home icon"
+          >edit</mat-icon
+        >
+        <mat-icon
+          [matTooltip]="'Eliminar: ' + row?.title"
+          matTooltipPosition="above"
+          aria-hidden="false"
+          (click)="delete(row?.id)"
+          aria-label="Example home icon"
+          >delete</mat-icon
+        >
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="5">
+        No se encontro concidencia con "{{ busqueda }}"
+      </td>
+    </tr>
+  </table>
+
+  <mat-paginator
+    showFirstLastButtons
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page of users"
+  ></mat-paginator>
+</div>

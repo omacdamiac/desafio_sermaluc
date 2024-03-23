@@ -1,0 +1,70 @@
+<h1 mat-dialog-title>{{ data.item ? "Editar producto" : "Nuevo producto" }}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="formProduct">
+    <!-- TITULO -->
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label for="title">Título</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="title"
+        id="title"
+        name="title"
+      />
+    </mat-form-field>
+    <!-- DESCRIPCION -->
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label for="description">Descripción</mat-label>
+      <textarea
+        formControlName="description"
+        id="description"
+        name="description"
+        matInput
+        placeholder="Ex. It makes me feel..."
+      ></textarea>
+    </mat-form-field>
+    <!-- IMAGEN -->
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label for="image">Imagen</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="image"
+        placeholder="Pega la ruta de la imagen"
+        id="image"
+        name="image"
+      />
+    </mat-form-field>
+    <div class="row">
+      <div class="col-md-6">
+        <!-- PRECIO -->
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label for="price">Precio</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="price"
+            placeholder="Precio en dólares"
+            id="price"
+            name="price"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <!-- CATEGORIAS -->
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label for="category">Categorias</mat-label>
+          <mat-select name="category" id="category" formControlName="category">
+            <mat-option *ngFor="let cat of data.cat" [value]="cat">
+              {{ cat }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions class="text-end">
+  <button mat-raised-button class="d-block d-md-inline-block" (click)="save()">Guardar producto</button>
+  <button mat-raised-button (click)="close()">Cancelar</button>
+</div>
